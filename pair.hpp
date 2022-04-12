@@ -2,7 +2,7 @@
 
 namespace ft
 {
-	template< class T1, class T2>
+	template <class T1, class T2>
 	struct pair
 	{
 		typedef	T1	first_type;
@@ -15,21 +15,21 @@ namespace ft
 			: first(), second()
 		{}
 		
-		template<class U, class V>
-		pair (const pair<U, V>& pr)
-			: first(pr.first), second(pr.second)
-		{}
-
-		pair (const T1& a, const T2& b)
-			: first(a), second(b)
+		pair(const T1& x, const T2& y);
+			: first(x), second(y)
 		{}
 		
-		pair& operator=(const pair& pr)
+		template <class U1, class U2>
+		pair(const pair<U1, U2>& p);
+			: first(p.first), second(p.second)
+		{}
+
+		pair& operator=(const pair& p)
         {
-            if (this == &pr)
+            if (this == &p)
                 return (*this);
-            this->first = pr.first;
-            this->second = pr.second;
+            this->first = p.first;
+            this->second = p.second;
             return *this;
         }
 
@@ -38,7 +38,7 @@ namespace ft
 	};
 
 	template <class T1, class T2>
-	bool operator==(const pair<T1, T2>& lhs, const pair<T1, T2>& rhs)
+	bool operator==(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
 	{ return lhs.first == rhs.first && lhs.second == rhs.second; }
 
 	template <class T1, class T2>
